@@ -15,6 +15,9 @@ contract TestSupplyChain {
         supplyChain = new SupplyChain();   
     }
 
+    // Test for failing conditions in this contracts:
+    // https://truffleframework.com/tutorials/testing-for-throws-in-solidity-tests
+
     //addItem
     function testAddItem() public{
         bool success = supplyChain.addItem(item, price);
