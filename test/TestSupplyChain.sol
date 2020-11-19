@@ -3,10 +3,12 @@ pragma solidity ^0.5.0;
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
 import "../contracts/SupplyChain.sol";
-
 contract TestSupplyChain {
+    
+    // Test for failing conditions in this contracts:
+    // https://truffleframework.com/tutorials/testing-for-throws-in-solidity-tests
 
-    string item = 'books';
+    string item = 'bags';
     uint price = 1000 wei;
     uint public initialBalance = 1 ether;
     SupplyChain supplyChain = SupplyChain(DeployedAddresses.SupplyChain());
@@ -14,9 +16,6 @@ contract TestSupplyChain {
     function beforeEach() public{
         supplyChain = new SupplyChain();   
     }
-
-    // Test for failing conditions in this contracts:
-    // https://truffleframework.com/tutorials/testing-for-throws-in-solidity-tests
 
     //addItem
     function testAddItem() public{
