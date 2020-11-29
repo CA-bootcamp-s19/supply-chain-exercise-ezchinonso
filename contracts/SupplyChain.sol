@@ -1,10 +1,10 @@
 /*
-    This exercise has been updated to use Solidity version 0.5
-    Breaking changes from 0.4 to 0.5 can be found here: 
-    https://solidity.readthedocs.io/en/v0.5.0/050-breaking-changes.html
+    This exercise has been updated to use Solidity version 0.6
+    Breaking changes from 0.5 to 0.6 can be found here: 
+    https://solidity.readthedocs.io/en/v0.6.12/060-breaking-changes.html
 */
 
-pragma solidity ^0.5.0;
+pragma solidity >=0.6.0 <0.7.0;
 
 contract SupplyChain {
 
@@ -73,11 +73,15 @@ contract SupplyChain {
    Note that the uninitialized Item.State is 0, which is also the index of the ForSale value,
    so checking that Item.State == ForSale is not sufficient to check that an Item is for sale.
    Hint: What item properties will be non-zero when an Item has been added?
+   
+   PS: Uncomment the modifier but keep the name for testing purposes!
    */
+
   modifier forSale(uint sku) {require(items[sku].state == State.ForSale); _;} 
   modifier sold(uint sku) {require(items[sku].state == State.Sold); _;} 
   modifier shipped(uint sku) {require(items[sku].state == State.Shipped); _;} 
   modifier received(uint sku) {require(items[sku].state == State.Received); _;} 
+
 
 
   constructor() public {
@@ -130,6 +134,7 @@ contract SupplyChain {
   }
 
   /* We have these functions completed so we can run tests, just ignore it :) */
+  /*
   function fetchItem(uint _sku) public view returns (string memory name, uint sku, uint price, uint state, address seller, address buyer) {
     name = items[_sku].name;
     sku = items[_sku].sku;
@@ -138,6 +143,6 @@ contract SupplyChain {
     seller = items[_sku].seller;
     buyer = items[_sku].buyer;
     return (name, sku, price, state, seller, buyer);
-  }
+  } */
 
 }
