@@ -109,6 +109,6 @@ contract TestSupplyChain {
         Assert.isFalse(success, "Item NOTFORSALE was received");
     }
 
-    function() payable external{}
+    fallback() payable external{}
 
 }
